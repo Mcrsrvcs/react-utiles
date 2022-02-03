@@ -12,7 +12,6 @@ import {
   Link
 } from "react-router-dom";
 
-
 function App() {
 const [homea,sethomea] =  useState(true);
 const [abouta,setabouta] =  useState(false);
