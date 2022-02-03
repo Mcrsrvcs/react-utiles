@@ -49,6 +49,8 @@ export default function UtilText(props) {
   const Clear = () => {
     let newtext = "";
     setText(newtext);
+    setchar(0);
+    setword(0);
   };
   const ChangeTextbo = () => {
     let txtcap = document.getElementById("Textarea");
