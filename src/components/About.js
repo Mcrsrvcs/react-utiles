@@ -1,36 +1,15 @@
 import React, { useState } from "react";
 
 export default function About(props) {
-  const [styleObj, setstyleobj] = useState({
-    color: "black",
-    backgroundColor: "white",
-    border:'1px solid white',
-  });
+
   document.title = "React Utiles | About";
   props.page()
   props.ab()
 
-  const [btnc, setbtnc] = useState("Enable Dark Mode");
-
-  const changeth = () => {
-    if (styleObj.color === "white") {
-      setstyleobj({
-        color: "black",
-        backgroundColor: "white",
-      });
-      setbtnc("Enable Dark Mode")
-    }
-    
-    else {
-      setstyleobj({
-        color: "white",
-        backgroundColor: "black",
-        border:'1px solid white'
-      });
-      setbtnc("Enable Light Mode")
-    }
-
-  };
+  let styleObj={
+        backgroundColor:props.them==='light'?'white':'black',
+        color:props.them==='light'?'black':'white',
+       }
 
   return (
     <div className="container" style={styleObj}>
@@ -132,11 +111,6 @@ export default function About(props) {
             </div>
           </div>
         </div>
-      </div>
-      <div className="conatiner my-3">
-        <button type="button" className="btn btn-primary"  onClick={changeth}>
-         {btnc}
-        </button>
       </div>
     </div>
   );

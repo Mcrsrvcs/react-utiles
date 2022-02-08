@@ -11,7 +11,7 @@ export default function UtilText(props) {
   const ChangeText = (event) => {
     setText(event.target.value);
     if(textarea!==null){
-    setword((textarea.value.split(' ').filter((item)=>{
+    setword((textarea.value.split(/\s+/).filter((item)=>{
       return item!=='';
     })).length)
 
@@ -83,7 +83,6 @@ export default function UtilText(props) {
 
   const copytxt = () => {
     let txtcap = document.getElementById("Textarea");
-    txtcap.select();
     navigator.clipboard.writeText(txtcap.value);
     props.ShowAlert('Text Copied','success');
   };
@@ -138,8 +137,8 @@ let ml='';
             onChange={ChangeText}
             placeholder="Enter text here"
           ></textarea>
-          <button className="btn btn-primary btn-copy my-3 btn-sm mx-1 mb-0 btncopy" onClick={copytxt} >Copy</button>
-          <button className="btn btn-primary btn-copy my-3 btn-sm mx-1 mb-0" onClick={res}>Remove Extra Spacies</button>
+          <button disabled={char===0} className={`btn btn-primary btn-copy my-3 btn-sm mx-1 mb-0 btncopy`} onClick={copytxt} >Copy</button>
+          <button disabled={char===0} className="btn btn-primary btn-copy my-3 btn-sm mx-1 mb-0" onClick={res}>Remove Extra Spacies</button>
 
           <div className="d-inline-block colorinp">
           <label htmlFor="exampleColorInput" className="form-label d-inline mx-1 labelcustom "></label>
@@ -151,31 +150,31 @@ let ml='';
 
         <div className="divl ">
           <h4 className="my-4  con">Convert To : </h4>
-          <button className="btn btnl btn-primary" onClick={ChangeTextup}>
+          <button disabled={char===0} className="btn btnl btn-primary" onClick={ChangeTextup}>
             UPPER CASE
           </button>
-          <button className="btn btnl btn-primary mx-1" onClick={ChangeTextlw}>
+          <button disabled={char===0} className="btn btnl btn-primary mx-1" onClick={ChangeTextlw}>
             lower case
           </button>
-          <button className="btn btnl btn-primary mx-0" onClick={ChangeTextcap}>Capital Letters
+          <button disabled={char===0} className="btn btnl btn-primary mx-0" onClick={ChangeTextcap}>Capital Letters
           </button>
         </div>
 
         <div className="divb mb-2 ">
           <h4 className=" my-4  cos">Costimize : </h4>
-          <button
+          <button disabled={char===0}
             className={`btn ${props.them==='dark'?'text-white':'btn-outline-primary'} btn-outline-primary bold`}
             onClick={ChangeTextbo}
           >
             BLOD
           </button>
-          <button
+          <button disabled={char===0}
             className={`btn  ${props.them==='dark'?'text-white':'btn-outline-primary'} btn-outline-primary bold mx-2 italic`}
             onClick={ChangeTextit}
           >
             Italic
           </button>
-          <button
+          <button disabled={char===0}
             className={`btn ${props.them==='dark'?'text-white':'btn-outline-primary'} btn-outline-primary mx-0 underline`}
             onClick={ChangeTextul}
           >
@@ -185,13 +184,13 @@ let ml='';
 
         <div className="divc  ">
           <h4 className="  my-4  csin">More Options :</h4>
-          <button className="btn btn-success" onClick={Clear}>
+          <button disabled={char===0} className="btn btn-success" onClick={Clear}>
             Clear
           </button>
           <a href="#pre">
-            <button className="btn btn-success mx-2">Preview</button>
+            <button disabled={char===0} className="btn btn-success mx-2">Preview</button>
           </a>
-          <button className="btn btn-success mx-0" onClick={ChangeTextnl}>
+          <button disabled={char===0} className="btn btn-success mx-0" onClick={ChangeTextnl}>
             Normal
           </button>
         </div>
@@ -218,14 +217,6 @@ let ml='';
         {(word*0.48)>=60?((word*0.008).toFixed(2)):((word*0.48).toFixed(0))}
         </h4>
         </div>
-        
-        {/* <p className="d-inline fs-4 mx-2 pm">OR</p> */}
-        {/* <p className="d-inline fs-4 pm " title="Based on 125 words per Minute">
-          {" "} */}
-         
-        {/* </p> */}
-
-
         <h4 className="d-inline-block l-5z" title="Based on 80 words per Minute">
         {(word*0.75)>=60?'Mintus':'Seconds'} to Speak :{" "}
         </h4>

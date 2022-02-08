@@ -66,8 +66,11 @@ const changeth=()=>{
   document.title = "React Utiles | Home";
   
   for(let i = 1;i<12;i++){
+    if(document.getElementsByClassName('btn')[i]!==undefined)
+  {
     document.getElementsByClassName('btn')[i].style.backgroundColor='';
     document.getElementsByClassName('btn')[i].style.border='';
+  }
     }
   }
 }
@@ -75,11 +78,13 @@ let bc='';
 const btncl=(colo)=>{
   bc = colo;
   for(let i = 1;i<12;i++){
+  if(document.getElementsByClassName('btn')[i]!==undefined)
+  {
   document.getElementsByClassName('btn')[i].style.backgroundColor=bc;
   document.getElementsByClassName('btn')[i].style.border=bc;
   }
+  }
   bc = colo;
-  console.log(bc);
 }
 const [color, setColor] = useState("");
   const ChangeColor=(event)=>{
@@ -103,7 +108,7 @@ const [color, setColor] = useState("");
       {/* <About/> */}
       <Switch className="router">
           <Route exact path="/about">
-            <About page={page} ab={ab}/>
+            <About page={page} ab={ab} them={theme} bgcolor={color} />
           </Route>
           <Route exact path="/">
              <UtilText them={theme} home={home} ShowAlert={ShowAlert} bgcolor={color} ChangeColor={ChangeColor}/>
